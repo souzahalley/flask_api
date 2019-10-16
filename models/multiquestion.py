@@ -34,6 +34,12 @@ class Tags(db.Model):
     tagname = db.Column(db.String(80), unique=True, nullable=False)
     question = db.relationship('Questions', secondary='multiquestions.relationtags', backref=db.backref('mquestions', lazy='dynamic'))
 
+    def serialize(self):
+        return {
+            'tagname' : self.tagname,
+            'question' : self.question
+        }
+
 relationtags = db.Table('relationtags', db.Model.metadata,
     db.Column('id_question', db.Integer, db.ForeignKey('multiquestions.questions.id')),
     db.Column('id_tag', db.Integer, db.ForeignKey('multiquestions.tags.id')),
