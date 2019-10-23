@@ -1,0 +1,21 @@
+<html>
+    <body>
+        <form action="multiquestions" method="POST">
+            <input type="text" name="question" value="Question Sent by the Form"><br>
+            {% for key, value in options.items(): %}
+                <input type="text" name="opt{{ key }}" value="{{ value }}"><br>
+            {% endfor %}
+            <input type="hidden" name="correct" value="{{ correct }}">
+            <input type="text" name="score" value="1"><br>
+            {% for i in qtype %} 
+                <input type="text" name="{{ i.type }}" value="Testing value {{ i.type.title() }}">
+            {% endfor %}
+            <br>
+            <input type="text" name="tags" value="tag1 tag2 tag3 tag4">
+
+            <input type="file" name="media"><br>
+            <input type="submit" name="submit">
+
+        </form>
+    </body>
+</html>
