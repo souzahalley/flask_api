@@ -1,4 +1,4 @@
-from __main__ import app
+from api import app
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import uuid
@@ -88,6 +88,8 @@ class Questions(db.Model):
             'correct' : self.correct,
             'score' : self.score
         }
+
+
 
 # db.drop_all()
 # db.create_all()
