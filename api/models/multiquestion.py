@@ -1,5 +1,4 @@
-from api import app
-from flask_sqlalchemy import SQLAlchemy
+from api import app, db
 from datetime import datetime
 import uuid
 
@@ -10,7 +9,6 @@ import uuid
 # app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://lynko:lynko@localhost/academy'
 
-db = SQLAlchemy(app)
 
 # CREATE SCHEMA IF NOT EXISTS multiquestions
 
@@ -81,11 +79,11 @@ class Questions(db.Model):
 
     def serialize(self):
         return {
+            'id' : self.id,
             'uuid' : self.uid,
-            'creation' : self.creation,
+            'creation' : f"{self.creation.day}-{self.creation.month}-{self.creation.year}",
             'question' : self.question,
             'options' : [self.option1, self.option2, self.option3, self.option4],
-            'correct' : self.correct,
             'score' : self.score
         }
 

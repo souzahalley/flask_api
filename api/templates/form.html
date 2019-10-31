@@ -1,6 +1,6 @@
 <html>
     <body>
-        <form action="multiquestions" method="POST">
+        <form action="multiquestion/add" method="POST" enctype="multipart/form-data">
             <input type="text" name="question" value="Question Sent by the Form"><br>
             {% for key, value in options.items(): %}
                 <input type="text" name="opt{{ key }}" value="{{ value }}"><br>
